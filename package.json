@@ -1,0 +1,23 @@
+{
+  "name": "projet-node",
+  "version": "1.0.0",
+  "description": "Projet Node ESGI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tnicolas28/api-node-projet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tnicolas28/api-node-projet/issues"
+  },
+  "homepage": "https://github.com/tnicolas28/api-node-projet#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.2",
+    "mongodb": "^3.6.5"
+  }
+}
