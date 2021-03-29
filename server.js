@@ -2,10 +2,10 @@
 const Hapi = require('@hapi/hapi');
 
 const init = async () => {
-    const port = process.env.PORT || 3000
+    const PORT = process.env.PORT || 3000;
 
     const server = Hapi.server({
-        port: port,
+        port: PORT,
         host: 'localhost'
     });
 
