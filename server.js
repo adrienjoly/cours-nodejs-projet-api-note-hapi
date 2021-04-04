@@ -16,18 +16,19 @@ const init = async () => {
     });
 
     const handleAuthenticateToken = async function (request, h) {
-        const authHeader = request.headers.authorization;
+        //const authHeader = request.headers.authorization;
+        const authHeader = request.headers['x-access-token'];
         const token = authHeader && authHeader.split(' ')[1];
+
         if (token == null) {
             throw Boom.badRequest('Token not found');
         }
-        jwt.verify(token, process.env.JWT_KEY, (err, user) => {
-            if(err){
-                throw Boom.badRequest('Token invalid');
-            }
-            console.log("here");
+        try{
+            const user = jwt.verify(token, process.env.JWT_KEY);
             return user;
-        });
+        } catch(err){
+            throw Boom.badRequest('Token invalid');
+        }
     };
 
     server.route({
@@ -40,14 +41,15 @@ const init = async () => {
         },
         handler: (request, h) => {
             var response = {};
-            //console.log(request.pre.auth.output.payload.error);
-            if(request.pre.auth.output.payload.error){
-                response.error = "Utilisateur non connecté";
+            if(request.pre.auth.output){
+                //response.error = request.pre.auth.output.payload;
+                response.error = "Utilisateur non connecté"; //TODO
                 response.notes = [];
                 return h.response(response).code(401);
             }
             else{
                 response.error = null;
+                //response.user = request.pre.auth.name;
                 response.notes = ['note 1', 'note 2'];
                 return h.response(response).code(200);
             }
@@ -67,21 +69,13 @@ const init = async () => {
             const username = request.payload.username;
             const user = { name: username }
 
-            const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "60"});
+            const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "1m"});
             response.error = null;
             response.accessToken = accessToken;
             return h.response(response).code(200);
 
         }
     });
-    // server.route({
-    //     method: 'GET',
-    //     path: '/hello/{name}',
-    //     handler: (request, h) => {
-    //         const name = request.params.name;
-    //         return 'Hello ' + name;
-    //     }
-    // });
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
