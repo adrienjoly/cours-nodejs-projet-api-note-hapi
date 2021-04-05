@@ -42,20 +42,20 @@ const init = async () => {
     server.route({
         method : "POST",
         path: "/signup",
-        handler : (request, h) => {
+        handler : async (request, h) => {
         
             const username = request.payload.username ? request.payload.username : null;
             const password = request.payload.password ? request.payload.password : null;
 
            
 
-            let success         = null;
-            let code            = null;
+            let success         = true;
+            let code            = 200;
             let errorMessage    = null;
+            let token           = null;
 
-            const userCollection    = client.db("nodejs-project").collection("users");
-            const user              = userCollection.find({"username": username}).limit(1).toArray()[0];
-
+            const userCollection    = await client.db("nodejs-project").collection("users");
+            const user              = await userCollection.find({"username": username}).toArray();
 
             //Contrôle des paramètres envoyés
 
@@ -82,7 +82,7 @@ const init = async () => {
                 
             }
 
-            else if (user)
+            else if (user.length > 0)
             {
                 success         = false;
                 code            = 400;
@@ -100,28 +100,29 @@ const init = async () => {
                     }
                 } 
             }
-            //Si les 2 paramètres sont valides -> hashage du mot de passe et insertion des données
-            const saltRound = 10;
-            bcrypt.hash(password,saltRound)
-            .then(hashedPassword => {
-                userCollection.insertOne({
+
+            if(success){
+                 //Si les 2 paramètres sont valides -> hashage du mot de passe et insertion des données
+                const saltRound = 10;
+                let hashedPw = await bcrypt.hash(password,saltRound)
+                await userCollection.insertOne({
                     "username" : username,
-                    "password" : hashedPassword
+                    "password" : hashedPw
                 });
-            })
-            .catch(err => console.error(err.message));
 
-            //Récupératon du nouvel user crée
-            const newUser              = userCollection.find({"username": username}).limit(1).toArray()[0];
+                //Récupératon du nouvel user crée
+                const newUser              =  await userCollection.find({"username": username}).limit(1).toArray();
 
-            token = jwt.sign({ "id":  newUser._id}, process.env.JWT_KEY || "testENCODE", {
-                expiresIn: 86400 // expires in 24 hours
-            });
+                token = jwt.sign({ "id":  newUser._id}, process.env.JWT_KEY || "testENCODE", {
+                    expiresIn: 86400 // expires in 24 hours
+                });
+            }
+           
 
             const data = {
                 "success" : success,
                 "error": errorMessage,
-                "token": token
+                "token" : token
             };
             
             return h.response(data).code(code);
