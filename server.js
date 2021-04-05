@@ -15,6 +15,10 @@ const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const dbName = 'notes-api';
 
+//2 ids utilisateurs pour tester l'ajout et la récupération des documents de la base.
+var userId1 = "606b0233b814fd06e19e35a1";
+var userId2 = "606b5a495fe6aa0590bbacff";
+
 const init = async () => {
     await client.connect();
 
@@ -55,21 +59,20 @@ const init = async () => {
             var response = {};
             response.error = null;
             response.note = [];
-            var userId = "606b0233b814fd06e19e35a1"; //l'id user de mongodb. Variable temporaire.
 
             //the user is not connected
             if(request.pre.auth.output){
-                response.error = "Utilisateur non connecté";
+                response.error = 'Utilisateur non connecté';
                 return h.response(response).code(401);
             }
             try{
                 const collectionNotes = client.db(dbName).collection('notes');
-                const docs = await collectionNotes.find({_id: { $eq: userId}}).toArray();
+                const docs = await collectionNotes.find({userId: { $eq: userId1}}).toArray();
+
                 response.note = docs;
                 return h.response(response).code(200);
             }catch(err){
-                //response.error = "Error in Database"; //TODO
-                response.error = err;
+                response.error = 'Error in Database';
                 return h.response(response).code(401);
             }
         }
@@ -87,33 +90,30 @@ const init = async () => {
             var response = {};
             response.error = null;
             response.note = {};
-            var userId = "606b0233b814fd06e19e35a1"; //l'id user de mongodb. Variable temporaire.
-            console.log(userId);
 
             //the user is not connected
             if(request.pre.auth.output){
-                response.error = "Utilisateur non connecté";
+                response.error = 'Utilisateur non connecté';
                 return h.response(response).code(401);
             }
             //the user didn't give a content in the body request
             if(!request.payload && !request.payload.content){
-                response.error = "Pas de content fourni";
+                response.error = 'Pas de content fourni';
                 return h.response(response).code(401);
             }
             try{
                 const collectionNotes = client.db(dbName).collection('notes');
                 await collectionNotes.insertOne({
-                    userId: userId, //TODO trouver à quel moment recuperer l'id d'utilisateur??
+                    userId: userId2, //TODO trouver à quel moment recuperer l'id d'utilisateur??
                     content: request.payload.content,
-                    createdAt: Date().now(),
+                    createdAt: Date(),
                     lastUpdatedAt: null
                 });
-                const docs = await collectionNotes.find({_id: { $eq: userId}}).toArray();
+                const docs = await collectionNotes.find({}, {sort: {_id: -1}, limit: 1 }).toArray(); //trouver le dernier document de note venant d'être créé
                 response.note = docs;
                 return h.response(response).code(200);
             }catch(err){
-                //response.error = "Error in Database"; //TODO
-                response.error = err;
+                response.error = "Error in Database";
                 return h.response(response).code(401);
             }
         }
@@ -131,11 +131,9 @@ const init = async () => {
             }
             const username = request.payload.username;
             const user = { name: username }
-
             const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "2m"});
             response.error = null;
             response.accessToken = accessToken;
-            //TODO: connection mongodb et récupération de l'id de l'utilisateur connecté
             return h.response(response).code(200);
 
         }
