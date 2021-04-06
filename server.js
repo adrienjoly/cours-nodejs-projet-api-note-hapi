@@ -97,7 +97,7 @@ const init = async () => {
                 let errorMessage    = null;
                 let token           = null;
 
-                const userCollection    = await client.db("nodejs-project").collection("users");
+                const userCollection    = await client.db(dbName).collection("users");
                 const user              = await userCollection.find({"username": username}).toArray();
 
                 //Contrôle des paramètres envoyés
@@ -231,7 +231,7 @@ const init = async () => {
         path: '/signin',
         handler: async (request, h) => {
             //Getting users collection from mongodb
-            const userCollection = client.db("notes-api").collection("users");
+            const userCollection = client.db(dbName).collection("users");
 
             //getting username and password from POST body
             const username = request.payload.username;
