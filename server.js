@@ -231,7 +231,7 @@ const init = async () => {
         path: '/signin',
         handler: async (request, h) => {
             //Getting users collection from mongodb
-            const userCollection = client.db(dbName).collection("users");
+            const userCollection = await client.db(dbName).collection("users");
 
             //getting username and password from POST body
             const username = request.payload.username;
@@ -249,7 +249,7 @@ const init = async () => {
             let token = "";
 
             //get user document from users collection to use later on to check if it exists
-            const user = userCollection.find({"username": username}).limit(1).toArray()[0];
+            const user = await userCollection.find({"username": username}).limit(1).toArray()[0];
 
             
             if(password.length < 4){
