@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 /* SERVEUR HTTP  */
 const Hapi          = require('@hapi/hapi');
 const jwt           = require('jsonwebtoken');
