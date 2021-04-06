@@ -4,6 +4,7 @@
   "description": "Projet Node ESGI",
   "main": "index.js",
   "scripts": {
+    "devStart": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
@@ -24,5 +25,9 @@
     "hapi": "^18.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.5"
+  },
+  "devDependencies": {
+    "@hapi/boom": "^9.1.2",
+    "nodemon": "^2.0.7"
   }
 }
