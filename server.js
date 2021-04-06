@@ -124,25 +124,7 @@ const init = async () => {
         }
     });
 
-    server.route({
-        method: 'POST',
-        path: '/login',
-        handler: (request, h) => {
-            var response = {};
-            if(!request.payload){
-                response.error = 'No username given';
-                response.accessToken = null;
-                return h.response(response).code(401);
-            }
-            const id = request.payload.id;
-            const user = { id: id };
-            const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: '2m'});
-            response.error = null;
-            response.accessToken = accessToken;
-            return h.response(response).code(200);
 
-        }
-    });
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
