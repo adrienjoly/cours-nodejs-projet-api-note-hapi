@@ -8,11 +8,7 @@ const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-/**
-     * MongoDB connection
-     */
-     
- await client.connect();
+
 
 if (uri === undefined) {
     console.error("please provide MONGODB_URI");
@@ -21,14 +17,8 @@ if (uri === undefined) {
 
 const Boom = require('@hapi/boom');
 
-const jwt = require('jsonwebtoken');
-
 /* SERVEUR MONGODB */
-const MongoClient = require('mongodb').MongoClient;
 const { ObjectId } = require('bson');
-
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const dbName = 'notes-api';
 
 
