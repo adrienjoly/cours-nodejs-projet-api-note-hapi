@@ -39,7 +39,7 @@ const init = async () => {
         path: '/singin',
         handler: async (request, h) => {
             //Getting users collection from mongodb
-            const userCollection = client.db("nodejs-project").collection("users");
+            const userCollection = client.db("notes-api").collection("users");
 
             //getting username and password from POST body
             const username = request.payload.username;
@@ -94,10 +94,8 @@ const init = async () => {
                 if(match){
                     /**
                      * if passwords match, generate token using users id and the JWT_KEY env variable
-                     * PS: For test purposes we use testENCODE as passphrase for JWT instead of JWT_KEY
-                     * TODO: Remove before production
                     */
-                    token = jwt.sign({ "id":  user._id}, process.env.JWT_KEY || "testENCODE", {
+                    token = jwt.sign({ "id":  user._id}, process.env.JWT_KEY, {
                         expiresIn: 86400 // expires in 24 hours
                     });
                 }
