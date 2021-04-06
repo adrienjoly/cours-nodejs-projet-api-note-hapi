@@ -70,9 +70,14 @@ const init = async () => {
                 response.error = 'Utilisateur non connecté';
                 return h.response(response).code(401);
             }
+            //is the data in the token have the user id?
+            if(!request.pre.auth.id){
+                response.error = 'Pas d\'id trouvé';
+                return h.response(response).code(401);
+            }
             try{
                 const collectionNotes = client.db(dbName).collection('notes');
-                const docs = await collectionNotes.find({userId: { $eq: userId1}}).toArray();
+                const docs = await collectionNotes.find({userId: { $eq: request.pre.auth.id}}).toArray();
                 response.note = docs;
                 return h.response(response).code(200);
             }catch(err){
