@@ -45,6 +45,7 @@ const init = async () => {
         } catch(err){
             throw Boom.badRequest('Token invalid');
         }
+        
     };
 
     server.route({
@@ -68,7 +69,6 @@ const init = async () => {
             try{
                 const collectionNotes = client.db(dbName).collection('notes');
                 const docs = await collectionNotes.find({userId: { $eq: userId1}}).toArray();
-
                 response.note = docs;
                 return h.response(response).code(200);
             }catch(err){
@@ -101,10 +101,15 @@ const init = async () => {
                 response.error = 'Pas de content fourni';
                 return h.response(response).code(401);
             }
+            //is the data in the token have the user id?
+            if(!request.pre.auth.id){
+                response.error = 'Pas d\'id trouvé';
+                return h.response(response).code(401);
+            }
             try{
                 const collectionNotes = client.db(dbName).collection('notes');
                 await collectionNotes.insertOne({
-                    userId: userId2, //TODO trouver à quel moment recuperer l'id d'utilisateur??
+                    userId: request.pre.auth.id,
                     content: request.payload.content,
                     createdAt: Date(),
                     lastUpdatedAt: null
@@ -113,7 +118,7 @@ const init = async () => {
                 response.note = docs;
                 return h.response(response).code(200);
             }catch(err){
-                response.error = "Error in Database";
+                response.error = 'Error in Database';
                 return h.response(response).code(401);
             }
         }
@@ -129,9 +134,9 @@ const init = async () => {
                 response.accessToken = null;
                 return h.response(response).code(401);
             }
-            const username = request.payload.username;
-            const user = { name: username }
-            const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "2m"});
+            const id = request.payload.id;
+            const user = { id: id };
+            const accessToken = jwt.sign(user, process.env.JWT_KEY, { expiresIn: '2m'});
             response.error = null;
             response.accessToken = accessToken;
             return h.response(response).code(200);
