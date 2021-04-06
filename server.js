@@ -249,7 +249,7 @@ const init = async () => {
             let token = "";
 
             //get user document from users collection to use later on to check if it exists
-            const user = await userCollection.find({"username": username}).limit(1).toArray()[0];
+            const user = await userCollection.find({"username": username}).limit(1).toArray();
 
             
             if(password.length < 4){
@@ -273,7 +273,7 @@ const init = async () => {
                 */
                 code = 400;
                 errorMessage = "Votre identifiant doit contenir entre 2 et 20 caractères";
-            }else if(!user){
+            }else if(!user[0]){
                 /**
                  * if user document contains element username that does not match the username from POST body, return code will be 403 
                  * and errorMessage will be "Cet identifiant est inconnu"
@@ -282,12 +282,12 @@ const init = async () => {
                 errorMessage = "Cet identifiant est inconnu";
             }else{
                 //Compare POST body password to mongodb passsword of user using bcrypt.compare()
-                const match = await bcrypt.compare(password, user.password);
+                const match = await bcrypt.compare(password, user[0].password);
                 if(match){
                     /**
                      * if passwords match, generate token using users id and the JWT_KEY env variable
                     */
-                    token = jwt.sign({ "id":  user._id}, process.env.JWT_KEY, {
+                    token = jwt.sign({ "id":  user[0]._id}, process.env.JWT_KEY || "7151e444c83f39120f0fc0c0344f692319c8a984594218f9ded90169db450a570a5ce384e7eeb0ce870532105d5872fad8976213a9d6ee4885c2bd2c7091daac", {
                         expiresIn: 86400 // expires in 24 hours
                     });
                 }
