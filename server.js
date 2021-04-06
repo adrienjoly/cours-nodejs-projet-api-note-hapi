@@ -228,7 +228,7 @@ const init = async () => {
      */
     server.route({
         method: 'POST',
-        path: '/singin',
+        path: '/signin',
         handler: async (request, h) => {
             //Getting users collection from mongodb
             const userCollection = client.db("notes-api").collection("users");
