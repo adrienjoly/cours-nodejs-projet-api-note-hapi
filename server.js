@@ -249,7 +249,7 @@ const init = async () => {
             let token = "";
 
             //get user document from users collection to use later on to check if it exists
-            const user = collection.find({"username": username}).limit(1).toArray()[0];
+            const user = userCollection.find({"username": username}).limit(1).toArray()[0];
 
             
             if(password.length < 4){
