@@ -3,11 +3,13 @@ const Hapi          = require('@hapi/hapi');
 const jwt           = require('jsonwebtoken');
 const bcrypt        = require('bcrypt');
 const MongoClient   = require("mongodb").MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+
 
 
 if (uri === undefined) {
@@ -18,7 +20,7 @@ if (uri === undefined) {
 const Boom = require('@hapi/boom');
 
 /* SERVEUR MONGODB */
-const { ObjectId } = require('bson');
+//const { ObjectId } = require('bson');
 const dbName = 'notes-api';
 
 
@@ -219,6 +221,66 @@ const init = async () => {
                 const docs = await collectionNotes.find({}, {sort: {_id: -1}, limit: 1 }).toArray(); //trouver le dernier document de note venant d'être créé
                 response.note = docs;
                 return h.response(response).code(200);
+            }catch(err){
+                response.error = 'Error in Database';
+                return h.response(response).code(401);
+            }
+        }
+    });
+    server.route({
+        method: 'PATCH',
+        path: '/notes/{id}',
+        options: {
+            pre: [
+                { method: handleAuthenticateToken, assign: 'auth', failAction: 'log'}
+            ]
+        },
+        handler: async (request, h) => {
+            var response = {};
+            response.error = null;
+            response.note = {};
+            
+            //the user is not connected
+            if(request.pre.auth.output){
+                response.error = 'Utilisateur non connecté';
+                return h.response(response).code(401);
+            }
+             //ID is not given
+             if(!request.params.id){
+                response.error = 'Cet identifiant est inconnu';
+                return h.response(response).code(404);
+           }
+            //the user didn't give a content in the body request
+            if(!request.payload && !request.payload.content){
+                response.error = 'Pas de content fourni';
+                return h.response(response).code(401);
+            }
+            //is the data in the token have the user id?
+            if(!request.pre.auth.id){
+                response.error = 'Pas d\'id trouvé';
+                return h.response(response).code(401);
+            }
+            try{
+                const collectionNotes = client.db(dbName).collection('notes');
+                const docs = await collectionNotes.find({_id:ObjectID(request.params.id)}).toArray();
+                console.log(docs);
+                if(!docs){
+                    response.error = 'Cet identifiant est inconnu';
+                    return h.response(response).code(404);
+                }
+               if(docs[0].userId != request.pre.auth.id)  {
+                   console.log(docs[0].userId);
+                   console.log(request.pre.auth.id);
+                    response.error = 'Accès non autorisé à cette note';
+                    return h.response(response).code(403);
+                }
+               var newvalues = { $set: {content: "modif note mathieu", lastUpdatedAt: Date()} }; 
+               const result = await collectionNotes.updateOne({_id:ObjectID(request.params.id)},newvalues);
+               //console.log(result);
+                const noteUpdated = await collectionNotes.find({_id:ObjectID(request.params.id)}).toArray();
+                response.note = noteUpdated;
+                return h.response(response).code(200);
+               
             }catch(err){
                 response.error = 'Error in Database';
                 return h.response(response).code(401);
