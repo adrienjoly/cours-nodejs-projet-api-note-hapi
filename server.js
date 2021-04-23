@@ -288,6 +288,56 @@ const init = async () => {
         }
     });
 
+    server.route({
+        method: 'DELETE',
+        path: '/notes/{id}',
+        options: {
+            pre: [
+                { method: handleAuthenticateToken, assign: 'auth', failAction: 'log'}
+            ]
+        },
+        handler: async (request, h) => {
+            var response = {};
+            response.error = null;
+            
+            //the user is not connected
+            if(request.pre.auth.output){
+                response.error = 'Utilisateur non connecté';
+                return h.response(response).code(401);
+            }
+             //ID is not given
+             if(!request.params.id){
+                response.error = 'Cet identifiant est inconnu';
+                return h.response(response).code(404);
+           }
+            //is the data in the token have the user id?
+            if(!request.pre.auth.id){
+                response.error = 'Pas d\'id trouvé';
+                return h.response(response).code(401);
+            }
+            try{
+                const collectionNotes = client.db(dbName).collection('notes');
+                const docs = await collectionNotes.find({_id:ObjectID(request.params.id)}).toArray();
+                if(!docs){
+                    response.error = 'Cet identifiant est inconnu';
+                    return h.response(response).code(404);
+                }
+               if(docs[0].userId != request.pre.auth.id)  {
+                   console.log(docs[0].userId);
+                   console.log(request.pre.auth.id);
+                    response.error = 'Accès non autorisé à cette note';
+                    return h.response(response).code(403);
+                }
+               const result = await collectionNotes.deleteOne({_id:ObjectID(request.params.id)});
+               console.log("you deleted ",result.deletedCount," note");
+                return h.response(response).code(200);
+               
+            }catch(err){
+                response.error = 'Error in Database';
+                return h.response(response).code(401);
+            }
+        }
+    });
 
 
     /**
