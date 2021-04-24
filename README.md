@@ -4,8 +4,8 @@ Projet Node ESGI
 
 # Prerequisites
 
-Git 2.24 or <
-NPM 6.14.4 or <
+- Git 2.24 or <
+- NPM 6.14.4 or <
 
 # How to install
 - First clone the repository at : https://github.com/tnicolas28/api-node-projet
