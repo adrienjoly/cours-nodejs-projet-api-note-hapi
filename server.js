@@ -300,13 +300,10 @@ const init = async () => {
           return h.response(response).code(404);
         }
         if (docs[0].userId != request.pre.auth.id) {
-          console.log(docs[0].userId);
-          console.log(request.pre.auth.id);
           response.error = 'Accès non autorisé à cette note';
           return h.response(response).code(403);
         }
         const result = await collectionNotes.deleteOne({ _id: ObjectID(request.params.id) });
-        console.log('you deleted ', result.deletedCount, ' note');
         return h.response(response).code(200);
       } catch (err) {
         response.error = 'Error in Database';
