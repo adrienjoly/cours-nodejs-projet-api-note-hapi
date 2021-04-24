@@ -17,11 +17,13 @@ Projet Node ESGI
 Congratulations, your server is started ! 
 
 # How to use
-
+- Setup a MongoDB database (Cloud or local)
+- Keep the login URI to connect to your database
 
 ## In command line interface with CURL !
 
 The route used here is the one we host on heroku, if you want to use it locally use this url "http://0.0.0.0:3000/" instead of "http://nodejs-projet.herokuapp.com/" !
+Also if you do local tests before every command you'll have to write : MONGOURI = your_uri curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"yourusername\",\"password\":\"password\"}" "http://nodejs-projet.herokuapp.com/signup
 
 ## Create an account 
 curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"yourusername\",\"password\":\"password\"}" "http://nodejs-projet.herokuapp.com/signup"
