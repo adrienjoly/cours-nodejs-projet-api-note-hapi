@@ -252,7 +252,7 @@ const init = async () => {
           response.error = 'Accès non autorisé à cette note';
           return h.response(response).code(403);
         }
-        const newvalues = { $set: { content: 'modif note mathieu', lastUpdatedAt: Date() } };
+        const newvalues = { $set: { content: request.payload.content, lastUpdatedAt: Date() } };
         const result = await collectionNotes.updateOne({ _id: ObjectID(request.params.id) }, newvalues);
         // console.log(result);
         const noteUpdated = await collectionNotes.find({ _id: ObjectID(request.params.id) }).toArray();
