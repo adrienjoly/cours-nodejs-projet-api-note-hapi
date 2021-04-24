@@ -2,8 +2,6 @@
 Projet Node ESGI
 
 
-For local test use http://0.0.0.0:3000;
-
 # Prerequisites
 
 Git 2.24 or <
@@ -23,7 +21,9 @@ Congratulations, your server is started !
 
 ## In command line interface with CURL !
 
-### Create an account 
+The route used here is the one we host on heroku, if you want to use it locally use this url "http://0.0.0.0:3000/" instead of "http://nodejs-projet.herokuapp.com/" !
+
+## Create an account 
 curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"yourusername\",\"password\":\"password\"}" "http://nodejs-projet.herokuapp.com/signup"
 
 ## Then Sign In with your freshly created account !
