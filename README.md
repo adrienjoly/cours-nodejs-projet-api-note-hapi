@@ -1,5 +1,5 @@
-For local test use http://0.0.0.0:3000
-=======
+# api-node-projet
+Projet Node ESGI
 
 # Prerequisites
 
