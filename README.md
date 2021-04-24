@@ -2,17 +2,46 @@
 Projet Node ESGI
 
 
-For local test use http://0.0.0.0:3000
+For local test use http://0.0.0.0:3000;
+# Prerequisites
 
-# authentication
-curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"ludovic\"}" "http://0.0.0.0:3000/login"
+Git 2.24 or <
+NPM 6.14.4 or <
 
-# access notes
-curl -X GET --header "Content-Type: application/json" "http://localhost:3000/notes"
+# How to install
+- First clone the repository at : https://github.com/tnicolas28/api-node-projet
+- Open the cloned repository in your favorite IDE
+- Open the terminal
+- In your terminal write : npm install, it will install every node packages required
+- To start the server, still in the terminal write : npm start
 
-# Generate key for JWT
-    ->open terminal and make command "node". 
-    ->Then in the shell node, make the command "require('crypto').randomBytes(64).toString('hex')" and obtain the key.
+Congratulations, your server is started ! 
 
-# test to generate id with ObjectId()
-606b0233b814fd06e19e35a1
+# How to use
+
+
+## In command line interface with CURL !
+
+### Create an account 
+curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"yourusername\",\"password\":\"password\"}" "http://nodejs-projet.herokuapp.com/signup"
+
+## Then Sign In with your freshly created account !
+curl -X POST --header "Content-Type: application/json" --data "{\"username\":\"yourusername\",\"password\":\"password\"}"  "http://nodejs-projet.herokuapp.com/signin"
+
+The API will return a token that you'll have to save ! You'll have to insert it in every request you'll make to retrieve datas
+
+## To insert a grade 
+Remember the token returned when you signed in, we'll use it here ! Replace 'yourtoken' by the token you saved :) !
+
+curl -X POST --header "Content-Type: application/json" --header "x-access-token:bear yourtoken" --data "{\"content\":\"your_content\"} "http//nodejs-projet.herokuapp.com/notes
+
+## To patch a grade
+curl -X PATCH --header "Content-Type: application/json" --header "x-access-token:bear yourtoken" "http//nodejs-projet.herokuapp.com/notes/{id_of_the_grade}
+
+## To display every grades
+curl -X GET --header "Content-Type: application/json" --header "x-access-token:bear yourtoken" "http//nodejs-projet.herokuapp.com/notes
+
+## To delete a specific grade
+curl -X DELETE --header "Content-Type: application/json" --header "x-access-token:bear yourtoken" "http//nodejs-projet.herokuapp.com/notes/{id_of_the_grade}
+
+## WITH Postman
