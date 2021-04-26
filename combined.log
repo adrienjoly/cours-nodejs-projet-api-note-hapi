@@ -3,12 +3,12 @@ Docker Compose is now in the Docker CLI, try `docker compose up`
 Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [36mapi_1    |[0m npm install
 [33mtests_1  |[0m waiting for server...
-[33mtests_1  |[0m npx: installed 13 in 14.626s
 [36mapi_1    |[0m npm WARN eslint-plugin-react-hooks@1.7.0 requires a peer of eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 but none is installed. You must install peer dependencies yourself.
 [36mapi_1    |[0m npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
 [36mapi_1    |[0m npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 [36mapi_1    |[0m 
-[36mapi_1    |[0m audited 423 packages in 22.324s
+[36mapi_1    |[0m audited 423 packages in 18.041s
+[33mtests_1  |[0m npx: installed 13 in 12.965s
 [36mapi_1    |[0m 
 [36mapi_1    |[0m 59 packages are looking for funding
 [36mapi_1    |[0m   run `npm fund` for details
@@ -24,13 +24,13 @@ Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [33mtests_1  |[0m starting tests...
 [33mtests_1  |[0m 
 [33mtests_1  |[0m ℹ️ Testing API in end-to-end mode.
-[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017/notes-api
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a token (275ms)
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a null error (118ms)
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a status 200 (121ms)
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a token (209ms)
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a null error (229ms)
-[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a status 200 (213ms)
+[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a token (276ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a null error (143ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a status 200 (157ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a token (257ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a null error (270ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a status 200 (264ms)
 [33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns empty array 
 [33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns a null error 
 [33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns a status 200 
@@ -47,7 +47,7 @@ Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [33mtests_1  |[0m   ✖ 1-golden-path › DELETE /notes/:id - returns a status 200 
 [33mtests_1  |[0m   ✖ 1-golden-path › DELETE /notes/:id - did delete the note 
 [33mtests_1  |[0m ℹ️ Testing API in end-to-end mode.
-[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017/notes-api
+[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without password - returns an error 
 [33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup without password - returns a status 400
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without password - returns no token 
@@ -57,8 +57,8 @@ Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with invalid username - returns an error
 [33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with invalid username - returns a status 400
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup with invalid username - returns no token 
-[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns an error (152ms)
-[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns a status 400 (138ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns an error (113ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns a status 400 (107ms)
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup with username that already exists - returns no token 
 [36mapi_1    |[0m Debug: internal, implementation, error 
 [36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
@@ -123,8 +123,8 @@ Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with invalid username - returns an error
 [33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with invalid username - returns a status 400
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with invalid username - returns no token 
-[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns an error (140ms)
-[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns a status 403 (134ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns an error (120ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns a status 403 (117ms)
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong username - returns no token 
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong password - returns an error 
 [33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong password - returns a status 403 
@@ -834,4 +834,4 @@ Attaching to api-node-projet_api_1, api-node-projet_tests_1
 [33mtests_1  |[0m 
 [33mtests_1  |[0m   38 tests failed
 [33mapi-node-projet_tests_1 exited with code 1
-[0mGracefully stopping... (press Ctrl+C again to force)
+[0m
