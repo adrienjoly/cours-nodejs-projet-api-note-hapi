@@ -61,7 +61,7 @@ const init = async () => {
     handler: async (request, h) => {
       const response = {};
       response.error = null;
-      response.note = [];
+      response.notes = [];
 
       // the user is not connected
       if (request.pre.auth.output) {
@@ -76,7 +76,7 @@ const init = async () => {
       try {
         const collectionNotes = client.db(dbName).collection('notes');
         const docs = await collectionNotes.find({ userId: { $eq: request.pre.auth.id } }).toArray();
-        response.note = docs;
+        response.notes = docs;
         return h.response(response).code(200);
       } catch (err) {
         response.error = 'Error in Database';
@@ -171,7 +171,7 @@ const init = async () => {
     handler: async (request, h) => {
       const response = {};
       response.error = null;
-      response.note = {};
+      response.notes = {};
 
       // the user is not connected
       if (request.pre.auth.output) {
@@ -197,7 +197,7 @@ const init = async () => {
           lastUpdatedAt: null,
         });
         const docs = await collectionNotes.find({}, { sort: { _id: -1 }, limit: 1 }).toArray(); // trouver le dernier document de note venant d'être créé
-        response.note = docs;
+        response.notes = docs;
         return h.response(response).code(200);
       } catch (err) {
         response.error = 'Error in Database';
@@ -216,7 +216,7 @@ const init = async () => {
     handler: async (request, h) => {
       const response = {};
       response.error = null;
-      response.note = {};
+      response.notes = {};
 
       // the user is not connected
       if (request.pre.auth.output) {
@@ -256,7 +256,7 @@ const init = async () => {
         const result = await collectionNotes.updateOne({ _id: ObjectID(request.params.id) }, newvalues);
         // console.log(result);
         const noteUpdated = await collectionNotes.find({ _id: ObjectID(request.params.id) }).toArray();
-        response.note = noteUpdated;
+        response.notes = noteUpdated;
         return h.response(response).code(200);
       } catch (err) {
         response.error = 'Error in Database';
