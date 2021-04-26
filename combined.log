@@ -1,0 +1,837 @@
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+Attaching to api-node-projet_api_1, api-node-projet_tests_1
+[36mapi_1    |[0m npm install
+[33mtests_1  |[0m waiting for server...
+[33mtests_1  |[0m npx: installed 13 in 14.626s
+[36mapi_1    |[0m npm WARN eslint-plugin-react-hooks@1.7.0 requires a peer of eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 but none is installed. You must install peer dependencies yourself.
+[36mapi_1    |[0m npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+[36mapi_1    |[0m npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[36mapi_1    |[0m 
+[36mapi_1    |[0m audited 423 packages in 22.324s
+[36mapi_1    |[0m 
+[36mapi_1    |[0m 59 packages are looking for funding
+[36mapi_1    |[0m   run `npm fund` for details
+[36mapi_1    |[0m 
+[36mapi_1    |[0m found 0 vulnerabilities
+[36mapi_1    |[0m 
+[36mapi_1    |[0m npm start
+[36mapi_1    |[0m 
+[36mapi_1    |[0m > projet-node@1.0.0 start /home/node/app
+[36mapi_1    |[0m > node server.js
+[36mapi_1    |[0m 
+[36mapi_1    |[0m Server running on http://0.0.0.0:3000
+[33mtests_1  |[0m starting tests...
+[33mtests_1  |[0m 
+[33mtests_1  |[0m ℹ️ Testing API in end-to-end mode.
+[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017/notes-api
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a token (275ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a null error (118ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signup - returns a status 200 (121ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a token (209ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a null error (229ms)
+[33mtests_1  |[0m   ✔ 1-golden-path › POST /signin on an existing user - returns a status 200 (213ms)
+[33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns empty array 
+[33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns a null error 
+[33mtests_1  |[0m   ✖ 1-golden-path › GET /notes of new user - returns a status 200 
+[33mtests_1  |[0m   ✖ 1-golden-path › PUT /notes - returns a null error 
+[33mtests_1  |[0m   ✖ 1-golden-path › PUT /notes - returns a status 200 
+[33mtests_1  |[0m   ✖ 1-golden-path › PUT /notes - returns the note with its content 
+[33mtests_1  |[0m   ✖ 1-golden-path › PUT /notes - adds a note Rejected promise returned by test
+[33mtests_1  |[0m   ✖ 1-golden-path › PUT /notes - adds a note that has an _id Rejected promise returned by test
+[33mtests_1  |[0m   ✖ 1-golden-path › PATCH /notes/:id - returns a null error 
+[33mtests_1  |[0m   ✖ 1-golden-path › PATCH /notes/:id - returns a status 200 
+[33mtests_1  |[0m   ✖ 1-golden-path › PATCH /notes/:id - returns the note and its content 
+[33mtests_1  |[0m   ✖ 1-golden-path › PATCH /notes/:id - did update the content of the note 
+[33mtests_1  |[0m   ✖ 1-golden-path › DELETE /notes/:id - returns a null error 
+[33mtests_1  |[0m   ✖ 1-golden-path › DELETE /notes/:id - returns a status 200 
+[33mtests_1  |[0m   ✖ 1-golden-path › DELETE /notes/:id - did delete the note 
+[33mtests_1  |[0m ℹ️ Testing API in end-to-end mode.
+[33mtests_1  |[0m WARNING: These tests will clear the database mongodb://mongo:27017/notes-api
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without password - returns an error 
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup without password - returns a status 400
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without password - returns no token 
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without username - returns an error 
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup without username - returns a status 400
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup without username - returns no token 
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with invalid username - returns an error
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with invalid username - returns a status 400
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup with invalid username - returns no token 
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns an error (152ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signup with username that already exists - returns a status 400 (138ms)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signup with username that already exists - returns no token 
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:343:20)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin without password - returns an error 
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:343:20)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin without password - returns a status 400 
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:343:20)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin without password - returns no token
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:357:27)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin without username - returns an error 
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:357:27)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin without username - returns a status 400 
+[36mapi_1    |[0m Debug: internal, implementation, error 
+[36mapi_1    |[0m     TypeError: Cannot read property 'length' of undefined
+[36mapi_1    |[0m     at handler (/home/node/app/server.js:357:27)
+[36mapi_1    |[0m     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[36mapi_1    |[0m     at async exports.Manager.execute (/home/node/app/node_modules/@hapi/hapi/lib/toolkit.js:60:28)
+[36mapi_1    |[0m     at async Object.internals.handler (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:46:20)
+[36mapi_1    |[0m     at async exports.execute (/home/node/app/node_modules/@hapi/hapi/lib/handler.js:31:20)
+[36mapi_1    |[0m     at async Request._lifecycle (/home/node/app/node_modules/@hapi/hapi/lib/request.js:372:32)
+[36mapi_1    |[0m     at async Request._execute (/home/node/app/node_modules/@hapi/hapi/lib/request.js:280:9)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin without username - returns no token
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with invalid username - returns an error
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with invalid username - returns a status 400
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with invalid username - returns no token 
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns an error (140ms)
+[33mtests_1  |[0m   ✔ 2-failure-cases › POST /signin with wrong username - returns a status 403 (134ms)
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong username - returns no token 
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong password - returns an error 
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong password - returns a status 403 
+[33mtests_1  |[0m   ✖ 2-failure-cases › POST /signin with wrong password - returns no token 
+[33mtests_1  |[0m   ✔ 2-failure-cases › GET /notes without token - returns a status 401
+[33mtests_1  |[0m   ✔ 2-failure-cases › GET /notes with invalid token - returns a status 401
+[33mtests_1  |[0m   ✔ 2-failure-cases › GET /notes with expired token - returns a status 401
+[33mtests_1  |[0m   ✔ 2-failure-cases › PUT /notes with expired token - returns a status 401
+[33mtests_1  |[0m   ✔ 2-failure-cases › PATCH /notes/:id with invalid token - returns a status 401
+[33mtests_1  |[0m   ✖ 2-failure-cases › PATCH /notes/:id with unknown note id - returns an error 
+[33mtests_1  |[0m   ✖ 2-failure-cases › PATCH /notes/:id with unknown note id - returns a status 404 
+[33mtests_1  |[0m   ✖ 2-failure-cases › PATCH /notes/:id with note that belongs to another user - returns an error 
+[33mtests_1  |[0m   ✖ 2-failure-cases › PATCH /notes/:id with note that belongs to another user - returns a status 403 
+[33mtests_1  |[0m   ✔ 2-failure-cases › DELETE /notes/:id with invalid token - returns a status 401
+[33mtests_1  |[0m   ✖ 2-failure-cases › DELETE /notes/:id with unknown note id - returns an error 
+[33mtests_1  |[0m   ✖ 2-failure-cases › DELETE /notes/:id with unknown note id - returns a status 404 
+[33mtests_1  |[0m   ✖ 2-failure-cases › DELETE /notes/:id with note that belongs to another user - returns an error 
+[33mtests_1  |[0m   ✖ 2-failure-cases › DELETE /notes/:id with note that belongs to another user - returns a status 403 
+[33mtests_1  |[0m   ─
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › GET /notes of new user - returns empty array
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:58
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    57:   });                                                                    
+[33mtests_1  |[0m    58:   test('returns empty array', (t, res) => t.deepEqual(res.data.notes, []…
+[33mtests_1  |[0m    59:   test('returns a null error', (t, res) => t.is(res.data.error, null));  
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + []
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:58:45
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › GET /notes of new user - returns a null error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:59
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    58:   test('returns empty array', (t, res) => t.deepEqual(res.data.notes, []…
+[33mtests_1  |[0m    59:   test('returns a null error', (t, res) => t.is(res.data.error, null));  
+[33mtests_1  |[0m    60:   test('returns a status 200', (t, res) => t.is(res.status, 200));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + null
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:59:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › GET /notes of new user - returns a status 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:60
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    59:   test('returns a null error', (t, res) => t.is(res.data.error, null));
+[33mtests_1  |[0m    60:   test('returns a status 200', (t, res) => t.is(res.status, 200));     
+[33mtests_1  |[0m    61: });                                                                    
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:60:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PUT /notes - returns a null error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:71
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    70:   });                                                                    
+[33mtests_1  |[0m    71:   test('returns a null error', (t, { putRes }) => t.is(putRes.data.error…
+[33mtests_1  |[0m    72:   test('returns a status 200', (t, { putRes }) => t.is(putRes.status, 20…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + null
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:71:53
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PUT /notes - returns a status 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:72
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    71:   test('returns a null error', (t, { putRes }) => t.is(putRes.data.error…
+[33mtests_1  |[0m    72:   test('returns a status 200', (t, { putRes }) => t.is(putRes.status, 20…
+[33mtests_1  |[0m    73:   test('returns the note with its content', (t, { putRes }) => t.is(putR…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:72:53
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PUT /notes - returns the note with its content
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:73
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    72:   test('returns a status 200', (t, { putRes }) => t.is(putRes.status, 20…
+[33mtests_1  |[0m    73:   test('returns the note with its content', (t, { putRes }) => t.is(putR…
+[33mtests_1  |[0m    74:   setup((t, { token }) => { // eslint-disable-line arrow-body-style      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + 'bonjour'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:73:66
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PUT /notes - adds a note
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:78
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    77:   });                                                                    
+[33mtests_1  |[0m    78:   test('adds a note', (t, { data }) => t.is(data.notes[0].content, conte…
+[33mtests_1  |[0m    79:   test('adds a note that has an _id', (t, { data }) => t.is(typeof data.…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Rejected promise returned by test. Reason:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   TypeError {
+[33mtests_1  |[0m     message: 'Cannot read property \'0\' of undefined',
+[33mtests_1  |[0m   }
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:78:55
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PUT /notes - adds a note that has an _id
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:79
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    78:   test('adds a note', (t, { data }) => t.is(data.notes[0].content, conte…
+[33mtests_1  |[0m    79:   test('adds a note that has an _id', (t, { data }) => t.is(typeof data.…
+[33mtests_1  |[0m    80: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Rejected promise returned by test. Reason:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   TypeError {
+[33mtests_1  |[0m     message: 'Cannot read property \'0\' of undefined',
+[33mtests_1  |[0m   }
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:79:78
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PATCH /notes/:id - returns a null error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:90
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    89:     const id = res.data.note._id; // eslint-disable-line no-underscore-d…
+[33mtests_1  |[0m    90:     t.is(res.data.note.content, initialContent);                         
+[33mtests_1  |[0m    91:     // 2. update the note                                                
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + 'bonjour'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › Object.fct (tests/1-golden-path.test.js:90:7)
+[33mtests_1  |[0m   › tests/setup/common.js:39:18
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PATCH /notes/:id - returns a status 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:90
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    89:     const id = res.data.note._id; // eslint-disable-line no-underscore-d…
+[33mtests_1  |[0m    90:     t.is(res.data.note.content, initialContent);                         
+[33mtests_1  |[0m    91:     // 2. update the note                                                
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + 'bonjour'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › Object.fct (tests/1-golden-path.test.js:90:7)
+[33mtests_1  |[0m   › tests/setup/common.js:39:18
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PATCH /notes/:id - returns the note and its content
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:90
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    89:     const id = res.data.note._id; // eslint-disable-line no-underscore-d…
+[33mtests_1  |[0m    90:     t.is(res.data.note.content, initialContent);                         
+[33mtests_1  |[0m    91:     // 2. update the note                                                
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + 'bonjour'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › Object.fct (tests/1-golden-path.test.js:90:7)
+[33mtests_1  |[0m   › tests/setup/common.js:39:18
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › PATCH /notes/:id - did update the content of the note
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:90
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    89:     const id = res.data.note._id; // eslint-disable-line no-underscore-d…
+[33mtests_1  |[0m    90:     t.is(res.data.note.content, initialContent);                         
+[33mtests_1  |[0m    91:     // 2. update the note                                                
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - undefined
+[33mtests_1  |[0m   + 'bonjour'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › Object.fct (tests/1-golden-path.test.js:90:7)
+[33mtests_1  |[0m   › tests/setup/common.js:39:18
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › DELETE /notes/:id - returns a null error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:120
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    119:   });                                                                   
+[33mtests_1  |[0m    120:   test('returns a null error', (t, { deleteRes }) => t.is(deleteRes.dat…
+[33mtests_1  |[0m    121:   test('returns a status 200', (t, { deleteRes }) => t.is(deleteRes.sta…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + null
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:120:56
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › DELETE /notes/:id - returns a status 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:121
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    120:   test('returns a null error', (t, { deleteRes }) => t.is(deleteRes.dat…
+[33mtests_1  |[0m    121:   test('returns a status 200', (t, { deleteRes }) => t.is(deleteRes.sta…
+[33mtests_1  |[0m    122:   test('did delete the note', async (t, { token }) => {                 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 200
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:121:56
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   1-golden-path › DELETE /notes/:id - did delete the note
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/1-golden-path.test.js:124
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    123:     const { data } = await axios.get(`${t.context.urlPrefix}/notes`, pa…
+[33mtests_1  |[0m    124:     t.is(data.error, null);                                             
+[33mtests_1  |[0m    125:     t.is(data.notes.length, 0);                                         
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + null
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/1-golden-path.test.js:124:7
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup without password - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:22
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    21:   setup((t) => axios.post(`${t.context.urlPrefix}/signup`));             
+[33mtests_1  |[0m    22:   test('returns an error', (t, res) => t.is(res.data.error, 'Le mot de p…
+[33mtests_1  |[0m    23:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Un nom d\'utilisateur ainsi qu\'un mot de passe sont requis.'
+[33mtests_1  |[0m   + 'Le mot de passe doit contenir au moins 4 caractères'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:22:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup without password - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:24
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    23:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    24:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    25: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'object'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:24:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup without username - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:29
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    28:   setup((t) => axios.post(`${t.context.urlPrefix}/signup`, { password: '…
+[33mtests_1  |[0m    29:   test('returns an error', (t, res) => t.is(res.data.error, 'Votre ident…
+[33mtests_1  |[0m    30:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Un nom d\'utilisateur ainsi qu\'un mot de passe sont requis.'
+[33mtests_1  |[0m   + 'Votre identifiant doit contenir entre 2 et 20 caractères'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:29:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup without username - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:31
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    30:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    31:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    32: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'object'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:31:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup with invalid username - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:41
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    40:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    41:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    42: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'object'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:41:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signup with username that already exists - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:52
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    51:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    52:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    53: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'object'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:52:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin without password - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:57
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    56:   setup((t) => axios.post(`${t.context.urlPrefix}/signin`));             
+[33mtests_1  |[0m    57:   test('returns an error', (t, res) => t.is(res.data.error, 'Le mot de p…
+[33mtests_1  |[0m    58:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Internal Server Error'
+[33mtests_1  |[0m   + 'Le mot de passe doit contenir au moins 4 caractères'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:57:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin without password - returns a status 400
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:58
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    57:   test('returns an error', (t, res) => t.is(res.data.error, 'Le mot de p…
+[33mtests_1  |[0m    58:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    59:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 500
+[33mtests_1  |[0m   + 400
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:58:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin without username - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:64
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    63:   setup((t) => axios.post(`${t.context.urlPrefix}/signin`, { password: '…
+[33mtests_1  |[0m    64:   test('returns an error', (t, res) => t.is(res.data.error, 'Votre ident…
+[33mtests_1  |[0m    65:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Internal Server Error'
+[33mtests_1  |[0m   + 'Votre identifiant doit contenir entre 2 et 20 caractères'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:64:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin without username - returns a status 400
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:65
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    64:   test('returns an error', (t, res) => t.is(res.data.error, 'Votre ident…
+[33mtests_1  |[0m    65:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    66:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 500
+[33mtests_1  |[0m   + 400
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:65:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin with invalid username - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:76
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    75:   test('returns a status 400', (t, res) => t.is(res.status, 400));       
+[33mtests_1  |[0m    76:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    77: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'string'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:76:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin with wrong username - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:87
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    86:   test('returns a status 403', (t, res) => t.is(res.status, 403));       
+[33mtests_1  |[0m    87:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    88: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'string'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:87:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin with wrong password - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:96
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    95:   });                                                                    
+[33mtests_1  |[0m    96:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identif…
+[33mtests_1  |[0m    97:   test('returns a status 403', (t, res) => t.is(res.status, 403));       
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - null
+[33mtests_1  |[0m   + 'Cet identifiant est inconnu'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:96:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin with wrong password - returns a status 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:97
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    96:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identif…
+[33mtests_1  |[0m    97:   test('returns a status 403', (t, res) => t.is(res.status, 403));       
+[33mtests_1  |[0m    98:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 200
+[33mtests_1  |[0m   + 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:97:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › POST /signin with wrong password - returns no token
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:98
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    97:   test('returns a status 403', (t, res) => t.is(res.status, 403));       
+[33mtests_1  |[0m    98:   test('returns no token', (t, res) => t.is(typeof res.data.token, 'unde…
+[33mtests_1  |[0m    99: });                                                                      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'string'
+[33mtests_1  |[0m   + 'undefined'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:98:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › PATCH /notes/:id with unknown note id - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:136
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    135:   });                                                                   
+[33mtests_1  |[0m    136:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identi…
+[33mtests_1  |[0m    137:   test('returns a status 404', (t, res) => t.is(res.status, 404));      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + 'Cet identifiant est inconnu'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:136:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › PATCH /notes/:id with unknown note id - returns a status 404
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:137
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    136:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identi…
+[33mtests_1  |[0m    137:   test('returns a status 404', (t, res) => t.is(res.status, 404));      
+[33mtests_1  |[0m    138: });                                                                     
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 404
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:137:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › PATCH /notes/:id with note that belongs to another user - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:153
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    152:   });                                                                   
+[33mtests_1  |[0m    153:   test('returns an error', (t, res) => t.is(res.data.error, 'Accès non …
+[33mtests_1  |[0m    154:   test('returns a status 403', (t, res) => t.is(res.status, 403));      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + 'Accès non autorisé à cette note'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:153:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › PATCH /notes/:id with note that belongs to another user - returns a status 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:154
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    153:   test('returns an error', (t, res) => t.is(res.data.error, 'Accès non …
+[33mtests_1  |[0m    154:   test('returns a status 403', (t, res) => t.is(res.status, 403));      
+[33mtests_1  |[0m    155: });                                                                     
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:154:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › DELETE /notes/:id with unknown note id - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:168
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    167:   });                                                                   
+[33mtests_1  |[0m    168:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identi…
+[33mtests_1  |[0m    169:   test('returns a status 404', (t, res) => t.is(res.status, 404));      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + 'Cet identifiant est inconnu'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:168:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › DELETE /notes/:id with unknown note id - returns a status 404
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:169
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    168:   test('returns an error', (t, res) => t.is(res.data.error, 'Cet identi…
+[33mtests_1  |[0m    169:   test('returns a status 404', (t, res) => t.is(res.status, 404));      
+[33mtests_1  |[0m    170: });                                                                     
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 404
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:169:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › DELETE /notes/:id with note that belongs to another user - returns an error
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:185
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    184:   });                                                                   
+[33mtests_1  |[0m    185:   test('returns an error', (t, res) => t.is(res.data.error, 'Accès non …
+[33mtests_1  |[0m    186:   test('returns a status 403', (t, res) => t.is(res.status, 403));      
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 'Utilisateur non connecté'
+[33mtests_1  |[0m   + 'Accès non autorisé à cette note'
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:185:42
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m   › runMicrotasks (<anonymous>)
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   2-failure-cases › DELETE /notes/:id with note that belongs to another user - returns a status 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   tests/2-failure-cases.test.js:186
+[33mtests_1  |[0m 
+[33mtests_1  |[0m    185:   test('returns an error', (t, res) => t.is(res.data.error, 'Accès non …
+[33mtests_1  |[0m    186:   test('returns a status 403', (t, res) => t.is(res.status, 403));      
+[33mtests_1  |[0m    187: });                                                                     
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   Difference:
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   - 401
+[33mtests_1  |[0m   + 403
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   › tests/2-failure-cases.test.js:186:46
+[33mtests_1  |[0m   › tests/setup/common.js:41:12
+[33mtests_1  |[0m   › runMicrotasks (<anonymous>)
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   ─
+[33mtests_1  |[0m 
+[33mtests_1  |[0m   38 tests failed
+[33mapi-node-projet_tests_1 exited with code 1
+[0mGracefully stopping... (press Ctrl+C again to force)
